@@ -110,7 +110,6 @@
     </form>
 
     {#await state}
-        <!-- todo: show a loading spinner thing here or something -->
         <BarLoader color="gray-500" duration="1s" />
     {:then state}
         {#if state == State.success}
