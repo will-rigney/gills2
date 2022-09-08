@@ -5,3 +5,9 @@
 <button class="p-2 my-4 border-1 border-solid flex justify-center"
     >{label}</button
 >
+
+<style>
+    *:hover {
+        text-decoration: underline;
+    }
+</style>

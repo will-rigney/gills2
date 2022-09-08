@@ -11,12 +11,15 @@
 
     const BASIN_URL = 'https://usebasin.com/f/c93020e4ccaa'
 
+    const TEXT_MAX_CHARS = 15000;
+    const NAME_MAX_CHARS = 1000;
+
     let form: HTMLFormElement
 
     // todo: maybe map response to possible reactive state
     enum State {
-        error,              // some yucky error (we ignore)
-        success,            // nice
+        error, // some yucky error (we ignore which)
+        success, // nice
     }
 
     // todo: should use a nice fast library for validation of <2000 words
@@ -24,11 +27,22 @@
     // observable api state
     let state: Promise<State>
 
+    $: console.log(state)
+
     async function submit_listener(e) {
         e.preventDefault()
 
         // get the form data
-        const formData = new FormData(form)
+        const form_data = new FormData(form)
+
+        // todo: do some validation here first
+        if (form_data.get("submission_name").toString().length < 1) {
+            console.log('validation failed!')
+            // validation failed
+            // todo: update state to show there was an error
+            // should actually say what sort of error it is
+            return
+        }
 
         // make the request
         state = fetch(BASIN_URL, {
@@ -37,9 +51,10 @@
                 // needed to submit to basin from js
                 Accept: 'application/json',
             },
-            body: formData,
+            body: form_data,
         })
             .then((response) => {
+                console.log(response)
                 switch (response.status) {
                     case 200:
                         return State.success
@@ -70,20 +85,20 @@
             name="submission_name"
         />
 
-        <!-- todo: add an error label w conditional -->
         <!-- todo: maybe even add tests for this thing -->
+        <!-- would require adding mocks -->
 
-        <!-- todo: add a loading spinner type thing -->
-
-        <!-- todo: validation! -->
         <Button label="submit" />
     </form>
-        
+
     {#await state}
-    <!-- show a loading spinner thing here or something -->
-    {:then state} 
+        <!-- todo: show a loading spinner thing here or something -->
+    {:then state}
         {#if state == State.success}
+            <!-- either redirect to success page or show a message here-->
         {:else if state == State.error}
+            <!-- show a sad face and a little error message -->
+            <p class="text-gray-500">An error has occured! Please try again.</p>
         {/if}
     {/await}
 </div>

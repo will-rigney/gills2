@@ -7,7 +7,7 @@
 <input
     class="text-entry p-2 resize-none overflow-hidden w-full outline-none"
     {placeholder}
-    {value}
+    bind:value
     {name}
     on:input={() => (this.parentNode.dataset.replicatedValue = this.value)}
 />
