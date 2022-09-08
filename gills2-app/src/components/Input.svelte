@@ -9,5 +9,4 @@
     {placeholder}
     bind:value
     {name}
-    on:input={() => (this.parentNode.dataset.replicatedValue = this.value)}
 />

@@ -1,7 +1,4 @@
 <script lang="ts">
-    import { onMount } from 'svelte'
-    import { dataset_dev } from 'svelte/internal'
-
     export let placeholder: string
     export let value: string = ''
     export let name: string
@@ -32,7 +29,6 @@
         /* Hidden from view, clicks, and screen readers */
         visibility: hidden;
     }
-
     .grow-wrap > textarea,
     .grow-wrap::after {
         grid-area: 1 / 1 / 2 / 2;

@@ -1,8 +1,9 @@
 <script lang="ts">
     export let label: string
+    export let hidden: boolean = false
 </script>
 
-<button class="p-2 my-4 border-1 border-solid flex justify-center"
+<button {hidden} class="p-2 my-4 mx-auto border-1 border-solid flex justify-center"
     >{label}</button
 >
 

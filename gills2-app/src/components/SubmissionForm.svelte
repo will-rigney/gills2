@@ -4,25 +4,26 @@
     import Button from './Button.svelte'
     import Input from './Input.svelte'
     import TextArea from './TextArea.svelte'
+    import Error from './Error.svelte'
 
-    // does this component just keep track of its own state?
-    // only needs loading, error, success
-    // cool how this whole thing doesn't require any router
+    import { BarLoader } from 'svelte-loading-spinners'
 
     const BASIN_URL = 'https://usebasin.com/f/c93020e4ccaa'
 
-    const TEXT_MAX_CHARS = 15000;
-    const NAME_MAX_CHARS = 1000;
+    const TEXT_MAX_CHARS = 15000
+    const NAME_MAX_CHARS = 1000
+
+    // todo: maybe even add tests for this thing
+    // would require adding mocks
 
     let form: HTMLFormElement
 
-    // todo: maybe map response to possible reactive state
     enum State {
         error, // some yucky error (we ignore which)
         success, // nice
     }
 
-    // todo: should use a nice fast library for validation of <2000 words
+    // todo: should ideally use a nice fast library for validation of <2000 words
 
     // observable api state
     let state: Promise<State>
@@ -30,29 +31,49 @@
     $: console.log(state)
 
     async function submit_listener(e) {
+        // todo: remember if we implement a store to clear it on successful submission
         e.preventDefault()
 
         // get the form data
         const form_data = new FormData(form)
 
-        // todo: do some validation here first
-        if (form_data.get("submission_name").toString().length < 1) {
-            console.log('validation failed!')
-            // validation failed
-            // todo: update state to show there was an error
-            // should actually say what sort of error it is
-            return
+        // validate name field
+        {
+            let submission_name = form_data.get('submission_name').toString()
+            if (
+                submission_name.length < 0 ||
+                submission_name.length > NAME_MAX_CHARS
+            ) {
+                console.log('submission name failed validation!')
+                state = Promise.resolve(State.error)
+                // todo: should actually say what sort of error it is
+                return
+            }
+        }
+        // validate text field
+        {
+            let submission_text = form_data.get('submission_text').toString()
+            if (
+                submission_text.length < 1 ||
+                submission_text.length > NAME_MAX_CHARS
+            ) {
+                console.log('submission text failed validation!')
+                state = Promise.resolve(State.error)
+                return
+            }
         }
 
-        // make the request
-        state = fetch(BASIN_URL, {
+        // request details
+        let request = {
             method: 'POST',
             headers: {
-                // needed to submit to basin from js
                 Accept: 'application/json',
             },
             body: form_data,
-        })
+        }
+
+        // make the request
+        state = fetch(BASIN_URL, request)
             .then((response) => {
                 console.log(response)
                 switch (response.status) {
@@ -60,6 +81,7 @@
                         return State.success
                     default:
                         // todo: maybe log what happened
+                        console.log('error making request: ' + response)
                         return State.error
                 }
             })
@@ -84,21 +106,25 @@
             placeholder="The name you wish to be credited by."
             name="submission_name"
         />
-
-        <!-- todo: maybe even add tests for this thing -->
-        <!-- would require adding mocks -->
-
-        <Button label="submit" />
+        <Button label="submit"/>
     </form>
 
     {#await state}
         <!-- todo: show a loading spinner thing here or something -->
+        <BarLoader color="gray-500" duration="1s" />
     {:then state}
         {#if state == State.success}
-            <!-- either redirect to success page or show a message here-->
+            <p>Submission was successful!</p>
+            <p>thank you for your input into gills2.</p>
         {:else if state == State.error}
             <!-- show a sad face and a little error message -->
-            <p class="text-gray-500">An error has occured! Please try again.</p>
+            <Error
+                ><p>
+                    An error has occured! :( Might be too few or too many words,
+                    might be something else wrong, who knows.
+                </p>
+                <p>In any case, please forgive us and try again.</p></Error
+            >
         {/if}
     {/await}
 </div>

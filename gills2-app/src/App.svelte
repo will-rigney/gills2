@@ -6,22 +6,12 @@
 </script>
 
 <main>
-    <!-- this ig would be where routing happens -->
-
+    <!-- this would likely be where routing would happen -->
+    <!-- container -->
     <div class="mx-auto my-16 max-w-screen-2xl">
         <!-- header -->
         <Header />
-
         <!-- form -->
         <SubmissionForm />
-
-        <!-- todo: some sort of navigation or change component on submit -->
     </div>
 </main>
-
-<!-- todo: should have tailwind scss file with common classes e.g. headers -->
-<style>
-    *:focus {
-        outline: none;
-    }
-</style>
