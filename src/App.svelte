@@ -1,6 +1,6 @@
 <script lang="ts">
-    import Header from './components/Header.svelte'
-    import SubmissionForm from './components/SubmissionForm.svelte'
+    import Header from './lib/Header.svelte'
+    import SubmissionForm from './lib/SubmissionForm.svelte'
     // todo: check this import
     import tailwind from './tailwind.css'
 </script>
