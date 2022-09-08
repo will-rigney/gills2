@@ -12,14 +12,14 @@ on:
     branches: [ "master" ]
 
 jobs:
+  # build job
   build:
-
     runs-on: ubuntu-latest
-
+    # todo: could be simplified
     strategy:
       matrix:
         node-version: [18.x]
-
+    # steps
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
@@ -30,3 +30,26 @@ jobs:
     - run: npm ci
     - run: npm run build
     - run: npm test --if-present
+    - name: "Upload build artifact"
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: './dist'
+
+  # deploy job
+  deploy:
+    runs-on: ubuntu-latest
+    # dependency to build job
+    needs: build
+    # grant GITHUB_TOKEN permissions required to make a deployment
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+    # deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    # steps
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
