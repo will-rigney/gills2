@@ -4,7 +4,7 @@ frontend for gills2.yrmnd.me
 
 ## what it does
 
-Collect anonymous responses for gills2 performance.
+Collect optionally anonymous responses for gills2 performance.
 
 ## how it works
 
@@ -25,3 +25,5 @@ If you have state that's important to retain within a component, consider creati
 import { writable } from 'svelte/store'
 export default writable(0)
 ```
+
+todo: do this for the submission

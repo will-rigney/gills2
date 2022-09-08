@@ -15,15 +15,14 @@
 
     // todo: maybe map response to possible reactive state
     enum State {
-        loading,
-        error,
-        success,
+        error,              // some yucky error (we ignore)
+        success,            // nice
     }
 
     // todo: should use a nice fast library for validation of <2000 words
 
-    // todo: should be obversable state
-    let state: State
+    // observable api state
+    let state: Promise<State>
 
     async function submit_listener(e) {
         e.preventDefault()
@@ -32,7 +31,7 @@
         const formData = new FormData(form)
 
         // make the request
-        fetch(BASIN_URL, {
+        state = fetch(BASIN_URL, {
             method: 'POST',
             headers: {
                 // needed to submit to basin from js
@@ -41,28 +40,24 @@
             body: formData,
         })
             .then((response) => {
-                // todo: more elegant error handling
-                // more reactive
-                if (response.status === 200) {
-                    // success
-                    console.log('success')
-                } else {
-                    // failure
-                    console.log('fail')
+                switch (response.status) {
+                    case 200:
+                        return State.success
+                    default:
+                        // todo: maybe log what happened
+                        return State.error
                 }
             })
-            .catch((error) => console.log(error))
+            // not sure what this even does
+            .catch((error) => State.error)
     }
 
     onMount(async () => {
-        // async function make_submission() {
         form.addEventListener('submit', submit_listener)
     })
 </script>
 
-<div class="w-auto m-4">
-    <!-- {#if loading}
-    {#else} -->
+<div class="w-auto m-4 text-center">
     <form bind:this={form}>
         <!-- todo: should enforce this 2000 word limit -->
         <!-- todo: this is not allowed to be empty, name is (anonymous, check w jimmy) -->
@@ -80,6 +75,15 @@
 
         <!-- todo: add a loading spinner type thing -->
 
+        <!-- todo: validation! -->
         <Button label="submit" />
     </form>
+        
+    {#await state}
+    <!-- show a loading spinner thing here or something -->
+    {:then state} 
+        {#if state == State.success}
+        {:else if state == State.error}
+        {/if}
+    {/await}
 </div>

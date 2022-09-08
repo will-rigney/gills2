@@ -5,12 +5,10 @@
     import tailwind from './tailwind.css'
 </script>
 
-<!-- todo: should have tailwind scss file with common classes e.g. headers -->
-
 <main>
     <!-- this ig would be where routing happens -->
 
-    <div class="m-8">
+    <div class="mx-auto my-16 max-w-screen-2xl">
         <!-- header -->
         <Header />
 
@@ -20,3 +18,10 @@
         <!-- todo: some sort of navigation or change component on submit -->
     </div>
 </main>
+
+<!-- todo: should have tailwind scss file with common classes e.g. headers -->
+<style>
+    *:focus {
+        outline: none;
+    }
+</style>
