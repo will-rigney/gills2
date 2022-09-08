@@ -1,12 +1,13 @@
 <script lang="ts">
     export let placeholder: string
-    let value: string = ''
+    export let value: string = ''
+    export let name: string
 </script>
 
-<div>
-    <textarea
-        class="text-entry p-2 m-2 flex-grow h-48 align-top"
-        {placeholder}
-        {value}
-    />
-</div>
+<input
+    class="text-entry p-2 m-2 resize-none overflow-hidden w-full"
+    {placeholder}
+    {value}
+    {name}
+    on:input={() => (this.parentNode.dataset.replicatedValue = this.value)}
+/>

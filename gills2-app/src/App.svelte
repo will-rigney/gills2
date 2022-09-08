@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Header from './components/Header.svelte'
     import SubmissionForm from './components/SubmissionForm.svelte'
     // todo: check this import
     import tailwind from './tailwind.css'
@@ -7,12 +8,15 @@
 <!-- todo: should have tailwind scss file with common classes e.g. headers -->
 
 <main>
-    <!-- header -->
-    <!-- todo: no styles here -->
-    <h1 class="text-xl">gills2</h1>
+    <!-- this ig would be where routing happens -->
 
-    <!-- form -->
-    <SubmissionForm />
+    <div class="m-8">
+        <!-- header -->
+        <Header />
 
-    <!-- todo: some sort of navigation or change component on submit -->
+        <!-- form -->
+        <SubmissionForm />
+
+        <!-- todo: some sort of navigation or change component on submit -->
+    </div>
 </main>
