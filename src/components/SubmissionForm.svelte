@@ -106,7 +106,7 @@
             placeholder="The name you wish to be credited by."
             name="submission_name"
         />
-        <Button label="submit"/>
+        <Button label="submit" />
     </form>
 
     {#await state}
