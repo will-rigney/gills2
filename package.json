@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "watch:tailwind": "postcss public/tailwind.css -o public/index.css -w",
+    "watch:tailwind": "postcss src/tailwind.css -o public/index.css -w",
     "build:tailwind": "NODE_ENV=production postcss src/tailwind.css -o public/index.css",
     "dev": "concurrently \"vite\" \"npm run watch:tailwind\"",
     "build": "npm run build:tailwind && vite build",
