@@ -7,8 +7,6 @@
 </script>
 
 <main class="pb-8">
-    <!-- secret background div -->
-    <div class="bg-black fixed top-0 left-0 w-full h-full -z-30" />
     <!-- container -->
     <div class="mx-auto py-1 max-w-screen-2xl">
         <!-- header -->
