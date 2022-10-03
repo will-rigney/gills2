@@ -8,7 +8,7 @@
 
 <main class="pb-8">
     <!-- container -->
-    <div class="mx-auto py-1 max-w-screen-2xl">
+    <div class="mx-auto py-1 max-w-7xl">
         <!-- header -->
         <Header />
 
