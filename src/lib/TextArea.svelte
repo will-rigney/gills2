@@ -7,9 +7,9 @@
 
 <!-- size technique adapted from https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/ -->
 <div>
-    <div class="grow-wrap grid m-2" bind:this={grow_wrap}>
+    <div class="grow-wrap grid" bind:this={grow_wrap}>
         <textarea
-            class="resize-none overflow-hidden outline-none"
+            class="resize-none overflow-hidden outline-none bg-yellow-200"
             {placeholder}
             bind:value
             {name}

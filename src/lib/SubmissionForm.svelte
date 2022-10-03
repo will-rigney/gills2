@@ -94,7 +94,7 @@
     })
 </script>
 
-<div class="w-auto m-4 text-center">
+<div class="w-auto m-4 p-8 text-center bg-black text-red-600 text-lg">
     <form bind:this={form}>
         <!-- todo: should enforce this 2000 word limit -->
         <!-- todo: this is not allowed to be empty, name is (anonymous, check w jimmy) -->
@@ -102,10 +102,13 @@
             placeholder="please write or copy text here. Maximum 2000 words."
             name="submission_text"
         />
+        <br />
         <Input
             placeholder="The name you wish to be credited by."
             name="submission_name"
         />
+        <br />
+        <!-- todo: should make this button not-clickable while form in flight -->
         <Button label="submit" />
     </form>
 

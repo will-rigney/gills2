@@ -5,7 +5,7 @@
 
 <button
     {hidden}
-    class="p-2 my-4 mx-auto border-1 border-solid flex justify-center"
+    class="p-2 my-4 mx-auto border-1 border-solid flex justify-center bg-yellow-200"
     >{label}</button
 >
 

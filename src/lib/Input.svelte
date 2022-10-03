@@ -5,7 +5,7 @@
 </script>
 
 <input
-    class="text-entry p-2 resize-none overflow-hidden w-full outline-none"
+    class="text-entry py-2 resize-none overflow-hidden box-border w-full outline-none bg-yellow-200"
     {placeholder}
     bind:value
     {name}
