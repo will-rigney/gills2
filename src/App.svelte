@@ -1,11 +1,11 @@
 <script lang="ts">
-    import Header from './lib/Header.svelte'
-    import SubmissionForm from './lib/SubmissionForm.svelte'
-    import Circle from './lib/Circle.svelte'
-    import BottomNotice from './lib/BottomNotice.svelte'
-    import TopNotice from './lib/TopNotice.svelte'
-    import MainContainer from './lib/MainContainer.svelte'
-    import HorizontalListFlexContainer from './lib/HorizontalListFlexContainer.svelte'
+    import Header from './lib/component/Header.svelte'
+    import SubmissionForm from './SubmissionForm.svelte'
+    import Circle from './lib/container/Circle.svelte'
+    import BottomNotice from './lib/container/BottomNotice.svelte'
+    import TopNotice from './lib/container/TopNotice.svelte'
+    import MainContainer from './lib/container/MainContainer.svelte'
+    import HorizontalListFlexContainer from './lib/container/HorizontalListFlexContainer.svelte'
 </script>
 
 <!-- container -->

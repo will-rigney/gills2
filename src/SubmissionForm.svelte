@@ -1,10 +1,10 @@
 <script lang="ts">
     import { onMount } from 'svelte'
 
-    import Button from './Button.svelte'
-    import Input from './Input.svelte'
-    import TextArea from './TextArea.svelte'
-    import Error from './Error.svelte'
+    import Button from './lib/component/Button.svelte'
+    import Input from './lib/component/Input.svelte'
+    import TextArea from './lib/component/TextArea.svelte'
+    import Error from './lib/container/Error.svelte'
 
     import { BarLoader } from 'svelte-loading-spinners'
 
@@ -20,14 +20,12 @@
         success, // nice
     }
 
-    // todo: should ideally use a nice fast library for validation of <2000 words
-
     // observable api state
     let state: Promise<State>
 
     $: console.log(state)
 
-    async function submit_listener(e) {
+    async function submit_form(e) {
         // todo: remember if we implement a store to clear it on successful submission
         e.preventDefault()
 
@@ -43,7 +41,6 @@
             ) {
                 console.log('submission name failed validation!')
                 state = Promise.resolve(State.error)
-                // todo: should actually say what sort of error it is
                 return
             }
         }
@@ -85,14 +82,13 @@
     }
 
     onMount(async () => {
-        form.addEventListener('submit', submit_listener)
+        form.addEventListener('submit', submit_form)
     })
 </script>
 
 <div class="w-auto m-4 p-8 text-center bg-black text-red-600 text-lg">
     <form bind:this={form}>
-        <!-- todo: should enforce this 2000 word limit -->
-        <!-- todo: this is not allowed to be empty, name is (anonymous, check w jimmy) -->
+        <!-- todo: should enforce this 2000 word limit with some nice lib -->
         <TextArea
             placeholder="please write or copy text here. Maximum 2000 words."
             name="submission_text"
@@ -114,14 +110,13 @@
             <p>Submission was successful!</p>
             <p>thank you for your input into gills2.</p>
         {:else if state == State.error}
-            <!-- show a sad face and a little error message -->
-            <Error
-                ><p>
+            <Error>
+                <p>
                     An error has occured! :( Might be too few or too many words,
                     might be something else wrong, who knows.
                 </p>
-                <p>In any case, please forgive us and try again.</p></Error
-            >
+                <p>In any case, please forgive us and try again.</p>
+            </Error>
         {/if}
     {/await}
 </div>

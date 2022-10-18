@@ -1,5 +1,5 @@
 <script lang="ts">
-    import logo from '../assets/heading.webp'
+    import logo from '../../assets/heading.webp'
 </script>
 
 <div class="inline-block z-0">

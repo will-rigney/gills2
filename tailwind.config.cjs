@@ -4,9 +4,7 @@ module.exports = {
     purgeLayersByDefault: true,
     removeDeprecatedGapUtilities: true,
   },
-  purge: {
-    content: ["/index.html", "./src/**/*.svelte"],
-  },
+  content: ["/index.html", "./src/**/*.svelte"],
   theme: {
     extend: {},
   },
