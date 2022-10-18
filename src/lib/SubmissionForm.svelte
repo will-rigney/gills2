@@ -13,9 +13,6 @@
     const TEXT_MAX_CHARS = 15000
     const NAME_MAX_CHARS = 1000
 
-    // todo: maybe even add tests for this thing
-    // would require adding mocks
-
     let form: HTMLFormElement
 
     enum State {
@@ -55,7 +52,7 @@
             let submission_text = form_data.get('submission_text').toString()
             if (
                 submission_text.length < 1 ||
-                submission_text.length > NAME_MAX_CHARS
+                submission_text.length > TEXT_MAX_CHARS
             ) {
                 console.log('submission text failed validation!')
                 state = Promise.resolve(State.error)
@@ -80,12 +77,10 @@
                     case 200:
                         return State.success
                     default:
-                        // todo: maybe log what happened
-                        console.log('error making request: ' + response)
                         return State.error
                 }
             })
-            // not sure what this even does
+            // catch any magic mystery errors
             .catch((error) => State.error)
     }
 
