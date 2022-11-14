@@ -18,7 +18,7 @@ jobs:
     # todo: could be simplified
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [19.x]
     # steps
     steps:
     - uses: actions/checkout@v3
