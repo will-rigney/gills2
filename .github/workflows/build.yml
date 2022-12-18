@@ -1,12 +1,48 @@
-name: Deploy to Github Pages
-
-on:
-  push:
-    branches: [ "master" ]
+name: Gills2 CI
 
 jobs:
+  # build job
+  build:
+
+    on: 
+      push:
+        branches: [ "master" ]
+      pull_request:
+        branches: ["master"]
+
+    # os
+    runs-on: ubuntu-latest
+
+    # steps
+    steps:
+      # checkout
+    - uses: actions/checkout@v3
+
+      # node
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: 19.x
+        cache: 'npm'
+
+      # install deps
+    - run: npm ci
+    - run: ./build.sh
+
+      # test
+    - run: npm test --if-present
+
+      # upload
+    - name: "Upload build artifact"
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: './dist'
+
   # deploy job
   deploy:
+    on: 
+      push:
+        branches: [ "master" ]
 
     # os
     runs-on: ubuntu-latest
