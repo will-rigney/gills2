@@ -14,51 +14,52 @@
     <Header />
     <!-- info circle box thing -->
     <Circle>
-        <p class="m-1">G.gills 2</p>
         <h2 class="bg-blue-900 inline-block text-xl m-2">
             REG. TEXT SUBMISSIONS
         </h2>
-        <ul class="list-disc ">
-            <li>
-                All submissions are to be read by actors during a live music
+        <div class="p-2 m-2">
+            <p>
+                All submissions to be read by actors during a live music
                 performance.
-            </li>
-            <li>
-                All submissions are to be collated and interpreted by the
+            </p>
+            <p>
+                All submissions to be collated and interpreted by the
                 performance team.
-            </li>
-            <li>
+            </p>
+            <p>
                 Our intention is to create an abstract dialogue between
                 submissions.
-            </li>
-            <li>
+            </p>
+            <p>
                 Several submissions may be read at the same time, either in
                 conversation, irrespectively, or in any way that may work with
                 the music and the performance as a whole.
-            </li>
-        </ul>
-        <p>Accepted formats include:</p>
-        <!-- here is the tricky grid list bit -->
-        <!-- likely some way these elements could be automatically partitioned -->
-        <HorizontalListFlexContainer>
-            <ul class="list-disc flex-auto basis-1/3">
-                <li>stories</li>
-                <li>dialogue</li>
-                <li>monologue</li>
-            </ul>
-            <ul class="list-disc flex-auto basis-1/3">
-                <li>poems</li>
-                <li>lyrics</li>
-                <li>observations</li>
-                <li>advice</li>
-                <li>directions</li>
-            </ul>
-            <ul class="list-disc flex-auto basis-1/3">
-                <li>theories</li>
-                <li>questions</li>
-                <li>advertisements (free)</li>
-            </ul>
-        </HorizontalListFlexContainer>
+            </p>
+        </div>
+        <div class="p-2 m-2">
+            <p>Accepted formats include:</p>
+            <!-- here is the tricky grid list bit -->
+            <!-- likely some way these elements could be automatically partitioned -->
+            <HorizontalListFlexContainer>
+                <ul class="list-disc flex-auto basis-1/3">
+                    <li>stories</li>
+                    <li>dialogue</li>
+                    <li>monologue</li>
+                </ul>
+                <ul class="list-disc flex-auto basis-1/3">
+                    <li>poems</li>
+                    <li>lyrics</li>
+                    <li>observations</li>
+                    <li>advice</li>
+                    <li>directions</li>
+                </ul>
+                <ul class="list-disc flex-auto basis-1/3">
+                    <li>theories</li>
+                    <li>questions</li>
+                    <li>advertisements (free)</li>
+                </ul>
+            </HorizontalListFlexContainer>
+        </div>
     </Circle>
 
     <!-- notice pinned to top right on big screens, underneath on small -->
