@@ -3,7 +3,7 @@
 </script>
 
 <div
-    class=" mt-64 mx-auto text-white text-center border-2 p-8 bg-black z-20 bg-clip-border text-sm md:text-md"
+    class=" mt-64 mx-auto text-white text-center p-8 bg-black z-20 bg-clip-border text-sm md:text-md"
     id="circle"
 >
     <slot />
