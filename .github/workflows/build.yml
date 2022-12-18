@@ -1,0 +1,31 @@
+name: Deploy to Github Pages
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  # deploy job
+  deploy:
+
+    # os
+    runs-on: ubuntu-latest
+
+    # dependency to build job
+    needs: build
+
+    # grant GITHUB_TOKEN permissions required to make a deployment
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
+    # deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    # steps
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
