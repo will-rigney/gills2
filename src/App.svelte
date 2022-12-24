@@ -63,14 +63,14 @@
     </Circle>
 
     <!-- notice pinned to top right on big screens, underneath on small -->
-    <TopNotice>
+    <!-- <TopNotice>
         <p>
             NOTICE: The <span
                 class="bg-pink-500 text-black px-2 py-1 text-xl italic no-underline"
                 >1st</span
             > Gills 2 event is TBA on the jipprock Productions facebook page.
         </p>
-    </TopNotice>
+    </TopNotice> -->
 
     <!-- form -->
     <SubmissionForm />
