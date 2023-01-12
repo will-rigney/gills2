@@ -2,6 +2,7 @@
     export let placeholder: string
     export let value: string = ''
     export let name: string
+    export let disabled: boolean
 </script>
 
 <input
@@ -9,4 +10,5 @@
     {placeholder}
     bind:value
     {name}
+    {disabled}
 />

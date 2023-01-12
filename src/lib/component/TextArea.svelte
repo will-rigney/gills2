@@ -2,6 +2,7 @@
     export let placeholder: string
     export let value: string = ''
     export let name: string
+    export let disabled: boolean
     let grow_wrap: HTMLDivElement
 </script>
 
@@ -14,6 +15,7 @@
             bind:value
             {name}
             on:input={() => (grow_wrap.dataset.replicatedValue = value)}
+            {disabled}
         />
     </div>
 </div>

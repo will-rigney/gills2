@@ -73,7 +73,13 @@
     </TopNotice> -->
 
     <!-- form -->
-    <SubmissionForm />
+    <!-- <SubmissionForm />-->
+
+    <div class="p-2 m-2">
+    <div class="w-auto m-4 p-8 text-center bg-black text-red-600 text-lg">
+        <p>Submissions have now been closed. Thank you again for your input into gills2.</p>
+        <p>RSVP to the event <a class="text-yellow-300 hover:text-red-400" href="https://forms.gle/VYzCrbVnAgh5BuYs7">here</a>.</p>
+    </div>
 
     <!-- pink notice at the bottom  -->
     <BottomNotice>

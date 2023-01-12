@@ -92,15 +92,17 @@
         <TextArea
             placeholder="please write or copy text here. Maximum 2000 words."
             name="submission_text"
+            disabled
         />
         <br />
         <Input
             placeholder="The name you wish to be credited by."
             name="submission_name"
+            disabled
         />
         <br />
         <!-- todo: should make this button not-clickable while form in flight -->
-        <Button label="submit" />
+        <Button label="submit" disabled />
     </form>
 
     {#await state}
