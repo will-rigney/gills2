@@ -20,7 +20,7 @@
     "postcss-cli": "^10.0.0",
     "prettier": "^2.8.4",
     "prettier-plugin-svelte": "^2.8.0",
-    "sass": "^1.55.0",
+    "sass": "^1.64.1",
     "svelte": "^3.55.1",
     "svelte-check": "^2.9.2",
     "svelte-loading-spinners": "^0.3.4",
